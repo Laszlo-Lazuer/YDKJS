@@ -12,13 +12,12 @@ function phonePurchase() {
   let affordable = '';
 
   while (cost < SPENDING_THRESHOLD) {
-    // console.log('cost: ' + cost + ' Threshold: ' + SPENDING_THRESHOLD);
     ++numPhones;
     cost += numPhones + PHONE_PRICE;
     costA = cost + ACCESORY_PRICE;
 
     if (costA < SPENDING_THRESHOLD) {
-      numAcc += 1;
+      ++numAcc;
       cost += ACCESORY_PRICE;
     } else {
       break;
@@ -26,9 +25,7 @@ function phonePurchase() {
   }
 
   cost = cost + (cost * TAX);
-
   affordable = (cost <= CHECKING_BALANCE) ? 'YES':'NO';
-
   return 'purchased: ' + numPhones + ' acc: ' + numAcc + ' Total Cost: $' + cost.toFixed(2) + ' Affordable?: ' + affordable;
 }
 
